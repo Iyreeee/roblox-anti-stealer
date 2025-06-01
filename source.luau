@@ -29,6 +29,7 @@ local ld; ld = hookfunction(loadstring, newcclosure(function(code, _)
         "myip",
         "externalip",
         "checkip",
+        "mailbox",
     }; for _,v in string_blacklist do
         if tostring(code):lower():find(v) then
             getgenv().notif("WARNING","Script execution halted; blacklisted string: " .. v, 10)
@@ -52,7 +53,7 @@ local ld; ld = hookfunction(loadstring, newcclosure(function(code, _)
             for name in sub:gmatch("function%s+([%w_%.]+)%s*%(") do
                 func_name = name;
             end
-            for name in sub:gmatch("local%s+function%s+([%w_%.]+)%s*%(") do -- i used chatgpt for the regex, sorry
+            for name in sub:gmatch("local%s+function%s+([%w_%.]+)%s*%(") do
                 func_name = name;
             end
 
@@ -92,6 +93,7 @@ local ld; ld = hookfunction(loadstring, newcclosure(function(code, _)
             "myip",
             "externalip",
             "checkip",
+            "mailbox",
         }; for _,v in string_blacklist do
             if tostring(VAR_NAME):lower():find(v) then
                 getgenv().notif("WARNING","Script execution halted; blacklisted string: " .. tostring(VAR_NAME),10)
